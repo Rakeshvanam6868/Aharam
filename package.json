@@ -1,0 +1,36 @@
+{
+  "name": "react-lessons",
+  "version": "1.0.0",
+  "description": "This is the React minor detail understanding in my way.",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rakeshvanam6868/React-Basic-to-Advance.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Rakesh Vanam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rakeshvanam6868/React-Basic-to-Advance/issues"
+  },
+  "homepage": "https://github.com/Rakeshvanam6868/React-Basic-to-Advance#readme",
+  "dependencies": {
+    "parcel": "^2.12.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-lessons": "file:",
+    "react-router-dom": "^6.24.1"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  },
+  "browsersLists": [
+    "las 2 versions"
+  ]
+}

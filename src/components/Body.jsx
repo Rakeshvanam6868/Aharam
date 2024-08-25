@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cards from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Hero = () => {
     const [resData, setResData] = useState([]);
     const [filterResData, setFilterResData] = useState([]);
@@ -35,6 +35,9 @@ const Hero = () => {
         const filterData = resData.filter((res) => res.avgRating >= 4);
         setFilterResData(filterData);
     };
+
+    const onlineStatus = useOnlineStatus();
+    if(onlineStatus === false) return <h1>Hey Check your Internet Connection</h1>
 
     return resData.length === 0 ? <Shimmer /> : (
         <div className="hero">

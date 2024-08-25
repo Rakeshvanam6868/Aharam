@@ -2,9 +2,11 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { nav_Icon } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Navbar = ()=>{
     const [loginBtn, setLoginBtn]= useState("Login");
+    const onlineStatus = useOnlineStatus();
     return (
         <div className="navbar">
             <div className="logo">
@@ -13,6 +15,7 @@ const Navbar = ()=>{
             </div>
             <div className="menu-items">
                 <ul>
+                    <li>Online:{onlineStatus ? "🟢" : "🔴"}</li>
                     <li>
                     <Link to="/">Home</Link>
                     </li>

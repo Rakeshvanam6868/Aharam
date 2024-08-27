@@ -11,7 +11,7 @@ const Navbar = ()=>{
         <div className="flex align-items justify-between ">
             <div className="flex items-center gap-3">
                 <img src={logo} alt="" className="w-14 h-14 rounded-full" />
-                <h1 className="text-black">AHARAM</h1>
+                <h1 className="text-black ">AHARAM</h1>
             </div>
             <div className="">
                 <ul>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Cards from "./Card";
+import Cards,{withPromotedLabel} from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -17,6 +17,7 @@ const Hero = () => {
             const response = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.9442309&lng=79.6023125&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
             const data = await response.json();
             const restaurants = data?.data?.cards?.flatMap(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(restaurant => restaurant.info) ?? []);
+            console.log(restaurants);
             setResData(restaurants);
             setFilterResData(restaurants);
         } catch (error) {
@@ -38,6 +39,8 @@ const Hero = () => {
 
     const onlineStatus = useOnlineStatus();
     if(onlineStatus === false) return <h1>Hey Check your Internet Connection</h1>
+
+    const RestuarantPromotedLabel = withPromotedLabel(Cards);
 
     return resData.length === 0 ? <Shimmer /> : (
         <div className="hero">
@@ -66,7 +69,7 @@ const Hero = () => {
                       key={restaurant.id}  // Ensure correct key
                       to={`/restaurants/${restaurant.id}`}
                     >
-                      <Cards resData={restaurant} />
+                    {restaurant.isOpen ? <RestuarantPromotedLabel resData={restaurant}/> :<Cards resData={restaurant} />}
                     </Link>
                 ))}
             </div>

@@ -15,4 +15,15 @@ const Cards = (props)=>{
     );
 }
 
+export const withPromotedLabel=(Cards)=>{
+    return(props)=>{
+        return (
+            <div className="absolute text-black">
+                <label htmlFor="">Promoted</label>
+                <Cards {...props}/>
+            </div>
+        );
+    }
+}
+
 export default Cards;

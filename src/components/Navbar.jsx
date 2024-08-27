@@ -8,12 +8,12 @@ const Navbar = ()=>{
     const [loginBtn, setLoginBtn]= useState("Login");
     const onlineStatus = useOnlineStatus();
     return (
-        <div className="navbar">
-            <div className="logo">
-                <img src={logo} alt="" className="logo-img" />
-                <h1>AHARAM</h1>
+        <div className="flex align-items justify-between ">
+            <div className="flex items-center gap-3">
+                <img src={logo} alt="" className="w-14 h-14 rounded-full" />
+                <h1 className="text-black">AHARAM</h1>
             </div>
-            <div className="menu-items">
+            <div className="">
                 <ul>
                     <li>Online:{onlineStatus ? "🟢" : "🔴"}</li>
                     <li>
@@ -25,13 +25,15 @@ const Navbar = ()=>{
                     <li>
                     <Link to="/contact">Contact Us</Link>
                     </li>
-                    <li>Cart</li>
-                    <button className="login" onClick={()=>{
+                    <li>
+                        <Link to="/grocery">Grocery</Link>
+                    </li>
+                    <button className="" onClick={()=>{
                         loginBtn === "login" ?   setLoginBtn("Login") : setLoginBtn("Logout");
                     }}>{loginBtn}</button>
                 </ul>
             </div>
-            <div className="nav-icon">
+            <div className="">
                 <img src={nav_Icon} alt="" className="icon-img" />
             </div>
         </div>

@@ -17,7 +17,7 @@ const Hero = () => {
             const response = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.9442309&lng=79.6023125&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
             const data = await response.json();
             const restaurants = data?.data?.cards?.flatMap(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(restaurant => restaurant.info) ?? []);
-            console.log(restaurants);
+            // console.log(restaurants);
             setResData(restaurants);
             setFilterResData(restaurants);
         } catch (error) {
@@ -43,36 +43,42 @@ const Hero = () => {
     const RestuarantPromotedLabel = withPromotedLabel(Cards);
 
     return resData.length === 0 ? <Shimmer /> : (
-        <div className="hero">
-            <div className="search">
+        <div className="flex flex-col items-center">
+            <div className="m-5 flex">
                 <input
                     type="text"
                     value={searchInput}
                     placeholder="Search restaurants..."
                     onChange={(e) => setSearchInput(e.target.value)}
+                    className="w-96 h-10 rounded-full rounded-r-none p-4 border-none text-lg text-black bg-slate-300"
                 />
-                <button className="search-btn" onClick={handleSearch}>
+                <button className="w-20 bg-slate-500 rounded-full rounded-l text-white" onClick={handleSearch}>
                     Search
                 </button>
             </div>
-            <div className="buttons">
+            <div className="">
                 <button
-                    className="filter-btn"
+                    className="bg-orange-400 p-2 pl-5 pr-5 rounded-md text-white"
                     onClick={handleTopRatedFilter}
                 >
                     Top Rated
                 </button>
             </div>
-            <div className="card-grid">
-                {filterResData.map((restaurant) => (
-                    <Link
-                      key={restaurant.id}  // Ensure correct key
-                      to={`/restaurants/${restaurant.id}`}
-                    >
-                    {restaurant.isOpen ? <RestuarantPromotedLabel resData={restaurant}/> :<Cards resData={restaurant} />}
-                    </Link>
-                ))}
-            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 m-5 w-full sm:w-8/12">
+              {filterResData.map((restaurant) => (
+             <Link
+               key={restaurant.id}
+                 to={`/restaurants/${restaurant.id}`}
+              >
+              {restaurant.isOpen ? (
+               <RestuarantPromotedLabel resData={restaurant} />
+               ) : (
+               <Cards resData={restaurant} />
+              )}
+               </Link>
+               ))}
+             </div>
+
         </div>
     );
 };

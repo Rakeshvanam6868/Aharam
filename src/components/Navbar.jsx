@@ -8,13 +8,13 @@ const Navbar = ()=>{
     const [loginBtn, setLoginBtn]= useState("Login");
     const onlineStatus = useOnlineStatus();
     return (
-        <div className="flex align-items justify-between ">
+        <div className="flex items-center justify-between p-3 bg-slate-700">
             <div className="flex items-center gap-3">
                 <img src={logo} alt="" className="w-14 h-14 rounded-full" />
-                <h1 className="text-black ">AHARAM</h1>
+                <h1 className="text-white text-2xl font-bold ">AHARAM</h1>
             </div>
             <div className="">
-                <ul>
+                <ul className="flex gap-5 text-white font-semibold text-lg">
                     <li>Online:{onlineStatus ? "🟢" : "🔴"}</li>
                     <li>
                     <Link to="/">Home</Link>
@@ -34,7 +34,7 @@ const Navbar = ()=>{
                 </ul>
             </div>
             <div className="">
-                <img src={nav_Icon} alt="" className="icon-img" />
+                <img src={nav_Icon} alt="" className="w-14 h-14 rounded-full" />
             </div>
         </div>
     )

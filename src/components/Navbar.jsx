@@ -4,12 +4,14 @@ import { nav_Icon } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Navbar = ()=>{
     const [loginBtn, setLoginBtn]= useState("Login");
     const onlineStatus = useOnlineStatus();
     const {loggedInUser}=useContext(UserContext);
 
+    const cartLength= useSelector((store)=> store.cart.items);
 
     return (
         <div className="flex items-center justify-between p-3 bg-slate-700">
@@ -28,6 +30,9 @@ const Navbar = ()=>{
                     </li>
                     <li>
                     <Link to="/contact">Contact Us</Link>
+                    </li>
+                    <li>
+                    cart-({cartLength.length})
                     </li>
                     <li>
                         <Link to="/grocery">Grocery</Link>

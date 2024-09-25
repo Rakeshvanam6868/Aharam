@@ -32,7 +32,7 @@ const Navbar = ()=>{
                     <Link to="/contact">Contact Us</Link>
                     </li>
                     <li>
-                    cart-({cartLength.length})
+                    <Link to="/cart">cart-({cartLength.length})</Link>
                     </li>
                     <li>
                         <Link to="/grocery">Grocery</Link>
